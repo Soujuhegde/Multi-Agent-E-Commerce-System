@@ -1,0 +1,288 @@
+/* =====================================================
+   Aether E-Commerce Platform Stylings
+   Accessible, Premium Light-Mode Visual Design Tokens
+   ===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+/* Accessibility & Variable Tokens */
+:root {
+    --primary: #4f46e5;       /* Deep Indigo (WCAG 6.5:1 on White) */
+    --primary-hover: #4338ca;
+    --primary-focus: rgba(79, 70, 229, 0.2);
+    
+    --secondary: #0d9488;     /* Deep Teal (WCAG 4.8:1 on White) */
+    --secondary-hover: #0f766e;
+    
+    --bg-main: #ffffff;
+    --bg-surface: #f9fafb;     /* Light Neutral 50 */
+    --border-color: #e5e7eb;   /* Border Neutral 200 */
+    
+    --text-primary: #111827;   /* Body Text Neutral 900 (WCAG 18.4:1) */
+    --text-muted: #4b5563;     /* Muted Text Neutral 600 (WCAG 4.55:1) */
+    
+    --semantic-success: #15803d;  /* Green 700 (WCAG 6.1:1) */
+    --semantic-warning: #b45309;  /* Amber 700 (WCAG 4.8:1) */
+    --semantic-danger: #b91c1c;   /* Red 700 (WCAG 6.6:1) */
+    --semantic-info: #1d4ed8;     /* Blue 700 (WCAG 6.5:1) */
+}
+
+/* Global Styles - Scaled up typography for premium readability */
+.stApp {
+    background-color: var(--bg-main) !important;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    color: var(--text-primary) !important;
+    font-size: 18px !important;
+}
+
+/* Ensure the sidebar toggle button is visible and accessible */
+header[data-testid="stHeader"] {
+    background-color: transparent !important;
+    color: var(--text-primary) !important;
+}
+
+/* Target all body texts, paragraphs, list items, and span nodes */
+p, span, li, td, th, div.stMarkdown, div[data-testid="stMarkdownContainer"] p, div[data-testid="stMarkdownContainer"] li {
+    font-size: 1.15rem !important;
+    line-height: 1.7 !important;
+}
+
+/* Make layout fit properly to the screen (95% width for perfect fit on all displays) */
+[data-testid="block-container"] {
+    max-width: 95% !important;
+    padding-left: 2.5rem !important;
+    padding-right: 2.5rem !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 1.8rem !important;
+}
+
+/* Sidebar Custom Styling */
+section[data-testid="stSidebar"] {
+    background-color: var(--bg-surface) !important;
+    border-right: 1px solid var(--border-color) !important;
+    box-shadow: 1px 0 10px rgba(0, 0, 0, 0.03) !important;
+}
+
+section[data-testid="stSidebar"] .stMarkdown h1, 
+section[data-testid="stSidebar"] .stMarkdown h2 {
+    color: var(--text-primary) !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.5px !important;
+}
+
+/* Navigation Links inside Sidebar */
+section[data-testid="stSidebar"] [data-testid="stSidebarNavigation"] ul {
+    padding-top: 1rem !important;
+}
+
+section[data-testid="stSidebar"] [data-testid="stSidebarNavigation"] li {
+    margin-bottom: 8px !important;
+    border-radius: 8px !important;
+    transition: all 0.2s ease !important;
+    border-left: 3px solid transparent !important;
+}
+
+section[data-testid="stSidebar"] [data-testid="stSidebarNavigation"] li:hover {
+    background-color: #f3f4f6 !important;
+    transform: translateX(3px) !important;
+}
+
+/* Active navigation item - active left border */
+section[data-testid="stSidebar"] [data-testid="stSidebarNavigation"] li[aria-current="page"] {
+    border-left-color: var(--primary) !important;
+    background-color: #eeebff !important;
+}
+
+/* Premium Card Components - Larger typography & padding */
+.premium-card {
+    background-color: var(--bg-main) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 10px !important;
+    padding: 1.8rem !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03) !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    margin-bottom: 1.5rem !important;
+}
+
+.premium-card:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04) !important;
+    border-color: #cbd5e1 !important;
+}
+
+/* Custom Metrics Styling - Increased value font size */
+div[data-testid="metric-container"] {
+    background-color: var(--bg-main) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 10px !important;
+    padding: 1.2rem !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02) !important;
+    transition: all 0.2s ease !important;
+}
+
+div[data-testid="metric-container"]:hover {
+    border-color: #cbd5e1 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+}
+
+div[data-testid="metric-container"] label {
+    font-size: 1.05rem !important;
+    color: var(--text-muted) !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+div[data-testid="metric-container"] div[data-testid="stMetricValue"] {
+    font-size: 2.4rem !important;
+    font-weight: 700 !important;
+    color: var(--text-primary) !important;
+    letter-spacing: -0.5px !important;
+}
+
+/* Accessible Widget Labels */
+[data-testid="stWidgetLabel"] label, [data-testid="stWidgetLabel"] p, label {
+    font-size: 1.05rem !important;
+    font-weight: 600 !important;
+    color: var(--text-primary) !important;
+    margin-bottom: 6px !important;
+}
+
+/* Streamlit Native Buttons & Form Submit Buttons - Increased padding & size */
+div.stButton > button, div.stFormSubmitButton > button {
+    background: var(--primary) !important;
+    color: #ffffff !important;
+    border: 1px solid var(--primary) !important;
+    border-radius: 8px !important;
+    padding: 0.8rem 2rem !important;
+    font-weight: 600 !important;
+    font-size: 1.15rem !important;
+    box-shadow: 0 2px 4px rgba(79, 70, 229, 0.15) !important;
+    transition: all 0.2s ease !important;
+    width: 100% !important;
+}
+
+div.stButton > button:hover, div.stFormSubmitButton > button:hover {
+    background: var(--primary-hover) !important;
+    border-color: var(--primary-hover) !important;
+    box-shadow: 0 4px 8px rgba(79, 70, 229, 0.25) !important;
+}
+
+div.stButton > button:focus, div.stFormSubmitButton > button:focus {
+    outline: none !important;
+    box-shadow: 0 0 0 3px var(--primary-focus) !important;
+}
+
+/* Custom Status and Alerts styling */
+.custom-alert {
+    padding: 1.2rem !important;
+    border-radius: 8px !important;
+    margin-bottom: 1.2rem !important;
+    font-weight: 500 !important;
+    display: flex !important;
+    align-items: center !important;
+    font-size: 1.05rem !important;
+}
+
+.custom-alert-success {
+    background-color: #f0fdf4 !important;
+    border: 1px solid #bbf7d0 !important;
+    color: var(--semantic-success) !important;
+}
+
+.custom-alert-error {
+    background-color: #fef2f2 !important;
+    border: 1px solid #fecaca !important;
+    color: var(--semantic-danger) !important;
+}
+
+.custom-alert-info {
+    background-color: #eff6ff !important;
+    border: 1px solid #bfdbfe !important;
+    color: var(--semantic-info) !important;
+}
+
+/* Headers - Increased typographic scale */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    color: var(--text-primary) !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.5px !important;
+}
+
+h1 {
+    font-size: 2.6rem !important;
+    margin-bottom: 0.6rem !important;
+}
+
+h2 {
+    font-size: 2.1rem !important;
+}
+
+h3 {
+    font-size: 1.6rem !important;
+}
+
+/* Dataframe & Tables styling */
+div[data-testid="stDataFrame"] {
+    background-color: var(--bg-main) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 8px !important;
+    padding: 4px !important;
+}
+
+/* Input Fields styling - Increased font and padding */
+input, textarea, select, div[data-baseweb="select"] {
+    background-color: var(--bg-main) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 6px !important;
+    font-size: 1.1rem !important;
+    transition: all 0.2s ease !important;
+}
+
+input {
+    padding: 0.75rem 0.95rem !important;
+    min-height: 48px !important;
+}
+
+textarea {
+    padding: 0.75rem 0.95rem !important;
+}
+
+div[data-baseweb="select"] > div {
+    font-size: 1.1rem !important;
+    min-height: 48px !important;
+}
+
+input:focus, textarea:focus, select:focus, div[data-baseweb="select"]:focus-within {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 3px var(--primary-focus) !important;
+    outline: none !important;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Subtitles/Captions - Increased font size */
+.caption-text {
+    color: var(--text-muted) !important;
+    font-size: 1.05rem !important;
+    margin-bottom: 1.5rem !important;
+}

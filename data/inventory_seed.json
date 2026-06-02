@@ -1,0 +1,32 @@
+[
+  {
+    "product_name": "iPhone 15",
+    "category": "Mobiles",
+    "price": 79900.0,
+    "stock_quantity": 45
+  },
+  {
+    "product_name": "Samsung S24",
+    "category": "Mobiles",
+    "price": 67000.0,
+    "stock_quantity": 30
+  },
+  {
+    "product_name": "MacBook Air M3",
+    "category": "Laptops",
+    "price": 114900.0,
+    "stock_quantity": 15
+  },
+  {
+    "product_name": "Sony WH-1000XM5",
+    "category": "Accessories",
+    "price": 29990.0,
+    "stock_quantity": 50
+  },
+  {
+    "product_name": "iPad Air M2",
+    "category": "Tablets",
+    "price": 59900.0,
+    "stock_quantity": 25
+  }
+]
