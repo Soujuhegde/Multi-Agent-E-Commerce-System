@@ -110,6 +110,43 @@ async def update_stock(
     }
 
 
+@router.post("/reduce-stock/{product_id}")
+async def reduce_stock(
+    product_id: int,
+    quantity: int,
+    db: Session = Depends(get_db)
+):
+
+    product = (
+        db.query(Product)
+        .filter(Product.id == product_id)
+        .first()
+    )
+
+    if not product:
+
+        return {
+            "success": False,
+            "message": "Product not found"
+        }
+
+    if product.stock_quantity < quantity:
+
+        return {
+            "success": False,
+            "message": f"Insufficient stock. Available: {product.stock_quantity}"
+        }
+
+    product.stock_quantity -= quantity
+
+    db.commit()
+
+    return {
+        "success": True,
+        "remaining_stock": product.stock_quantity
+    }
+
+
 @router.delete("/{product_id}")
 async def delete_product(
     product_id: int,

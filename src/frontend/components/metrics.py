@@ -57,4 +57,3 @@ def render_metrics():
             """,
             unsafe_allow_html=True
         )
-    st.markdown("<br>", unsafe_allow_html=True)

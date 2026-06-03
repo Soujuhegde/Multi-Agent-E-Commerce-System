@@ -31,6 +31,10 @@ class InvoiceItemResponse(BaseModel):
 
     unit_price: float
 
+    model_config = {
+        "from_attributes": True
+    }
+
 
 class InvoiceResponse(BaseModel):
 
@@ -45,3 +49,7 @@ class InvoiceResponse(BaseModel):
     created_at: datetime
 
     items: List[InvoiceItemResponse]
+
+    model_config = {
+        "from_attributes": True
+    }

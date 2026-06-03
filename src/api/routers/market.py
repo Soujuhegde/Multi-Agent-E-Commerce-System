@@ -36,10 +36,23 @@ async def recommend_price(
 
 
 @router.get("/insights")
-async def market_insights():
+async def market_insights(
+    product_name: str = "iPhone 15"
+):
+
+    from src.tools.market_tool import MarketTool
+    from src.agents.market.pricing_engine import PricingEngine
+
+    comp_price = MarketTool.get_competitor_price(product_name)
+    demand_score = MarketTool.get_demand_score(product_name)
+    trend_name = MarketTool.get_market_trend()
+    trend_score = 90 if trend_name == "Rising" else (70 if trend_name == "Stable" else 50)
+    rec_price = PricingEngine.recommend_price(comp_price)
 
     return {
-        "trend_score": 87,
-        "competitor_price": 950,
-        "demand_score": 80
+        "product_name": product_name,
+        "competitor_price": comp_price,
+        "demand_score": demand_score,
+        "trend_score": trend_score,
+        "recommended_price": rec_price
     }

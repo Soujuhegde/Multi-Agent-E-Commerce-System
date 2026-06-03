@@ -1,288 +1,623 @@
 /* =====================================================
-   Aether E-Commerce Platform Stylings
-   Accessible, Premium Light-Mode Visual Design Tokens
+   Aether E-Commerce Platform — Modern SaaS Design System
+   Clean, Professional, Production-Ready
    ===================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 
-/* Accessibility & Variable Tokens */
+/* ─── Design Tokens ───────────────────────────────── */
 :root {
-    --primary: #4f46e5;       /* Deep Indigo (WCAG 6.5:1 on White) */
-    --primary-hover: #4338ca;
-    --primary-focus: rgba(79, 70, 229, 0.2);
-    
-    --secondary: #0d9488;     /* Deep Teal (WCAG 4.8:1 on White) */
-    --secondary-hover: #0f766e;
-    
-    --bg-main: #ffffff;
-    --bg-surface: #f9fafb;     /* Light Neutral 50 */
-    --border-color: #e5e7eb;   /* Border Neutral 200 */
-    
-    --text-primary: #111827;   /* Body Text Neutral 900 (WCAG 18.4:1) */
-    --text-muted: #4b5563;     /* Muted Text Neutral 600 (WCAG 4.55:1) */
-    
-    --semantic-success: #15803d;  /* Green 700 (WCAG 6.1:1) */
-    --semantic-warning: #b45309;  /* Amber 700 (WCAG 4.8:1) */
-    --semantic-danger: #b91c1c;   /* Red 700 (WCAG 6.6:1) */
-    --semantic-info: #1d4ed8;     /* Blue 700 (WCAG 6.5:1) */
+    /* Brand Colors */
+    --primary:        #4f46e5;
+    --primary-hover:  #4338ca;
+    --primary-light:  #eef2ff;
+    --primary-focus:  rgba(79, 70, 229, 0.12);
+
+    --secondary:      #0d9488;
+
+    /* Surface Colors */
+    --bg-main:        #ffffff;
+    --bg-surface:     #f8fafc;
+    --bg-elevated:    #f1f5f9;
+
+    /* Borders */
+    --border:         #e2e8f0;
+    --border-strong:  #cbd5e1;
+
+    /* Text */
+    --text-primary:   #0f172a;
+    --text-secondary: #475569;
+    --text-muted:     #94a3b8;
+
+    /* Semantic */
+    --success:        #16a34a;
+    --success-light:  #f0fdf4;
+    --success-border: #bbf7d0;
+    --warning:        #d97706;
+    --warning-light:  #fffbeb;
+    --danger:         #dc2626;
+    --danger-light:   #fef2f2;
+    --danger-border:  #fecaca;
+    --info:           #2563eb;
+    --info-light:     #eff6ff;
+    --info-border:    #bfdbfe;
+
+    /* Spacing Scale */
+    --sp-1:  4px;
+    --sp-2:  8px;
+    --sp-3:  12px;
+    --sp-4:  16px;
+    --sp-5:  20px;
+    --sp-6:  24px;
+    --sp-8:  32px;
+    --sp-10: 40px;
+    --sp-12: 48px;
+
+    /* Layout */
+    --navbar-h:  56px;
+    --content-max: 1280px;
+
+    /* Border Radius */
+    --r-sm:  6px;
+    --r-md:  8px;
+    --r-lg:  12px;
+    --r-xl:  16px;
+    --r-full: 9999px;
+
+    /* Shadows */
+    --shadow-xs: 0 1px 2px rgba(0,0,0,0.05);
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.10), 0 4px 8px rgba(0,0,0,0.05);
+
+    /* Transitions */
+    --ease: all 0.15s ease;
+    --ease-md: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Global Styles - Scaled up typography for premium readability */
+
+/* ─── Base App ─────────────────────────────────────── */
 .stApp {
-    background-color: var(--bg-main) !important;
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
-    color: var(--text-primary) !important;
-    font-size: 18px !important;
-}
-
-/* Ensure the sidebar toggle button is visible and accessible */
-header[data-testid="stHeader"] {
-    background-color: transparent !important;
-    color: var(--text-primary) !important;
-}
-
-/* Target all body texts, paragraphs, list items, and span nodes */
-p, span, li, td, th, div.stMarkdown, div[data-testid="stMarkdownContainer"] p, div[data-testid="stMarkdownContainer"] li {
-    font-size: 1.15rem !important;
-    line-height: 1.7 !important;
-}
-
-/* Make layout fit properly to the screen (95% width for perfect fit on all displays) */
-[data-testid="block-container"] {
-    max-width: 95% !important;
-    padding-left: 2.5rem !important;
-    padding-right: 2.5rem !important;
-    padding-top: 0.5rem !important;
-    padding-bottom: 1.8rem !important;
-}
-
-/* Sidebar Custom Styling */
-section[data-testid="stSidebar"] {
     background-color: var(--bg-surface) !important;
-    border-right: 1px solid var(--border-color) !important;
-    box-shadow: 1px 0 10px rgba(0, 0, 0, 0.03) !important;
-}
-
-section[data-testid="stSidebar"] .stMarkdown h1, 
-section[data-testid="stSidebar"] .stMarkdown h2 {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
     color: var(--text-primary) !important;
-    font-weight: 700 !important;
-    letter-spacing: -0.5px !important;
+    font-size: 14px !important;
+    -webkit-font-smoothing: antialiased !important;
 }
 
-/* Navigation Links inside Sidebar */
-section[data-testid="stSidebar"] [data-testid="stSidebarNavigation"] ul {
-    padding-top: 1rem !important;
-}
 
-section[data-testid="stSidebar"] [data-testid="stSidebarNavigation"] li {
-    margin-bottom: 8px !important;
-    border-radius: 8px !important;
-    transition: all 0.2s ease !important;
-    border-left: 3px solid transparent !important;
-}
+/* ─── Hide All Streamlit Default Chrome ────────────── */
+header[data-testid="stHeader"]                { display: none !important; }
+section[data-testid="stSidebar"]              { display: none !important; }
+[data-testid="stSidebarCollapsedControl"]     { display: none !important; }
+[data-testid="collapsedControl"]              { display: none !important; }
+button[kind="header"]                         { display: none !important; }
+#MainMenu                                     { display: none !important; }
+footer                                        { display: none !important; }
+.stDeployButton                               { display: none !important; }
 
-section[data-testid="stSidebar"] [data-testid="stSidebarNavigation"] li:hover {
-    background-color: #f3f4f6 !important;
-    transform: translateX(3px) !important;
-}
 
-/* Active navigation item - active left border */
-section[data-testid="stSidebar"] [data-testid="stSidebarNavigation"] li[aria-current="page"] {
-    border-left-color: var(--primary) !important;
-    background-color: #eeebff !important;
-}
-
-/* Premium Card Components - Larger typography & padding */
-.premium-card {
-    background-color: var(--bg-main) !important;
-    border: 1px solid var(--border-color) !important;
-    border-radius: 10px !important;
-    padding: 1.8rem !important;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03) !important;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    margin-bottom: 1.5rem !important;
-}
-
-.premium-card:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04) !important;
-    border-color: #cbd5e1 !important;
-}
-
-/* Custom Metrics Styling - Increased value font size */
-div[data-testid="metric-container"] {
-    background-color: var(--bg-main) !important;
-    border: 1px solid var(--border-color) !important;
-    border-radius: 10px !important;
-    padding: 1.2rem !important;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02) !important;
-    transition: all 0.2s ease !important;
-}
-
-div[data-testid="metric-container"]:hover {
-    border-color: #cbd5e1 !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
-}
-
-div[data-testid="metric-container"] label {
-    font-size: 1.05rem !important;
-    color: var(--text-muted) !important;
-    font-weight: 600 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.5px !important;
-}
-
-div[data-testid="metric-container"] div[data-testid="stMetricValue"] {
-    font-size: 2.4rem !important;
-    font-weight: 700 !important;
-    color: var(--text-primary) !important;
-    letter-spacing: -0.5px !important;
-}
-
-/* Accessible Widget Labels */
-[data-testid="stWidgetLabel"] label, [data-testid="stWidgetLabel"] p, label {
-    font-size: 1.05rem !important;
-    font-weight: 600 !important;
-    color: var(--text-primary) !important;
-    margin-bottom: 6px !important;
-}
-
-/* Streamlit Native Buttons & Form Submit Buttons - Increased padding & size */
-div.stButton > button, div.stFormSubmitButton > button {
-    background: var(--primary) !important;
-    color: #ffffff !important;
-    border: 1px solid var(--primary) !important;
-    border-radius: 8px !important;
-    padding: 0.8rem 2rem !important;
-    font-weight: 600 !important;
-    font-size: 1.15rem !important;
-    box-shadow: 0 2px 4px rgba(79, 70, 229, 0.15) !important;
-    transition: all 0.2s ease !important;
+/* ─── Layout — Full Width Without Sidebar ─────────── */
+[data-testid="stAppViewContainer"] > section.main {
+    margin-left: 0 !important;
     width: 100% !important;
 }
 
-div.stButton > button:hover, div.stFormSubmitButton > button:hover {
-    background: var(--primary-hover) !important;
-    border-color: var(--primary-hover) !important;
-    box-shadow: 0 4px 8px rgba(79, 70, 229, 0.25) !important;
+.block-container,
+[data-testid="block-container"],
+[data-testid="stAppViewBlockContainer"] {
+    max-width: var(--content-max) !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding-top:    calc(var(--navbar-h) + 8px) !important;
+    padding-bottom: var(--sp-12) !important;
+    padding-left:   var(--sp-8) !important;
+    padding-right:  var(--sp-8) !important;
 }
 
-div.stButton > button:focus, div.stFormSubmitButton > button:focus {
+
+/* ─── Top Navbar ───────────────────────────────────── */
+.aether-topnav {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: var(--navbar-h) !important;
+    background: var(--bg-main) !important;
+    border-bottom: 1px solid var(--border) !important;
+    box-shadow: var(--shadow-xs) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0 var(--sp-6) !important;
+    z-index: 9999 !important;
+    font-family: 'Inter', sans-serif !important;
+    box-sizing: border-box !important;
+}
+
+.aether-brand {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--sp-2) !important;
+    text-decoration: none !important;
+    color: var(--text-primary) !important;
+    font-weight: 700 !important;
+    font-size: 15px !important;
+    letter-spacing: -0.3px !important;
+    flex-shrink: 0 !important;
+    min-width: 130px !important;
+}
+
+.aether-nav-links {
+    display: flex !important;
+    align-items: center !important;
+    gap: 2px !important;
+    flex: 1 !important;
+    justify-content: center !important;
+}
+
+.aether-nav-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    padding: 6px 13px !important;
+    border-radius: var(--r-md) !important;
+    text-decoration: none !important;
+    font-size: 13.5px !important;
+    font-weight: 500 !important;
+    color: var(--text-secondary) !important;
+    transition: var(--ease) !important;
+    white-space: nowrap !important;
+    border: 1px solid transparent !important;
+}
+
+.aether-nav-link:hover {
+    color: var(--text-primary) !important;
+    background-color: var(--bg-surface) !important;
+    border-color: var(--border) !important;
+}
+
+.aether-nav-link.active {
+    color: var(--primary) !important;
+    background-color: var(--primary-light) !important;
+    font-weight: 600 !important;
+    border-color: rgba(79, 70, 229, 0.2) !important;
+}
+
+.aether-nav-right {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--sp-3) !important;
+    flex-shrink: 0 !important;
+    min-width: 130px !important;
+    justify-content: flex-end !important;
+}
+
+.aether-nav-avatar {
+    width: 26px !important;
+    height: 26px !important;
+    border-radius: 50% !important;
+    background: linear-gradient(135deg, var(--primary) 0%, #7c3aed 100%) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    cursor: pointer !important;
+    flex-shrink: 0 !important;
+    box-shadow: 0 1px 4px rgba(79, 70, 229, 0.35) !important;
+    transition: var(--ease) !important;
+    letter-spacing: 0.5px !important;
+}
+
+.aether-nav-avatar:hover {
+    box-shadow: 0 2px 8px rgba(79, 70, 229, 0.45) !important;
+    transform: scale(1.05) !important;
+}
+
+
+/* ─── Page Header ──────────────────────────────────── */
+.page-header {
+    margin-bottom: var(--sp-6) !important;
+    padding-bottom: var(--sp-5) !important;
+    border-bottom: 1px solid var(--border) !important;
+}
+
+.page-title {
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    color: var(--text-primary) !important;
+    letter-spacing: -0.4px !important;
+    margin: 0 0 4px 0 !important;
+    line-height: 1.3 !important;
+}
+
+.page-subtitle {
+    font-size: 13.5px !important;
+    color: var(--text-secondary) !important;
+    margin: 0 !important;
+    line-height: 1.5 !important;
+    font-weight: 400 !important;
+}
+
+
+/* ─── Cards ────────────────────────────────────────── */
+.premium-card,
+.aether-card {
+    background: var(--bg-main) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--r-lg) !important;
+    padding: var(--sp-5) !important;
+    box-shadow: var(--shadow-sm) !important;
+    transition: var(--ease-md) !important;
+    margin-bottom: var(--sp-4) !important;
+}
+
+.premium-card:hover,
+.aether-card:hover {
+    box-shadow: var(--shadow-md) !important;
+    border-color: var(--border-strong) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Card title */
+.premium-card h3,
+.aether-card h3 {
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    color: var(--text-primary) !important;
+    margin: 0 0 var(--sp-4) 0 !important;
+    padding: 0 !important;
+    letter-spacing: -0.2px !important;
+}
+
+
+/* ─── Metric Cards ─────────────────────────────────── */
+div[data-testid="metric-container"] {
+    background: var(--bg-main) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--r-lg) !important;
+    padding: var(--sp-5) !important;
+    box-shadow: var(--shadow-sm) !important;
+    transition: var(--ease-md) !important;
+}
+
+div[data-testid="metric-container"]:hover {
+    box-shadow: var(--shadow-md) !important;
+    border-color: var(--border-strong) !important;
+}
+
+div[data-testid="metric-container"] label {
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    color: var(--text-secondary) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.7px !important;
+}
+
+div[data-testid="metric-container"] div[data-testid="stMetricValue"] {
+    font-size: 1.9rem !important;
+    font-weight: 700 !important;
+    color: var(--text-primary) !important;
+    letter-spacing: -0.5px !important;
+}
+
+
+/* ─── Buttons ──────────────────────────────────────── */
+div.stButton > button,
+div.stFormSubmitButton > button {
+    background: var(--primary) !important;
+    color: #ffffff !important;
+    border: 1px solid var(--primary) !important;
+    border-radius: var(--r-md) !important;
+    padding: 0 var(--sp-4) !important;
+    font-weight: 600 !important;
+    font-size: 13.5px !important;
+    height: 36px !important;
+    line-height: 1 !important;
+    box-shadow: var(--shadow-xs) !important;
+    transition: var(--ease) !important;
+    width: auto !important;
+    min-width: 90px !important;
+    letter-spacing: 0.1px !important;
+}
+
+div.stButton > button:hover,
+div.stFormSubmitButton > button:hover {
+    background: var(--primary-hover) !important;
+    border-color: var(--primary-hover) !important;
+    box-shadow: 0 3px 10px rgba(79, 70, 229, 0.3) !important;
+    transform: translateY(-1px) !important;
+}
+
+div.stButton > button:focus,
+div.stFormSubmitButton > button:focus {
     outline: none !important;
     box-shadow: 0 0 0 3px var(--primary-focus) !important;
 }
 
-/* Custom Status and Alerts styling */
-.custom-alert {
-    padding: 1.2rem !important;
-    border-radius: 8px !important;
-    margin-bottom: 1.2rem !important;
-    font-weight: 500 !important;
-    display: flex !important;
-    align-items: center !important;
-    font-size: 1.05rem !important;
+div.stButton > button:active,
+div.stFormSubmitButton > button:active {
+    transform: translateY(0) !important;
 }
 
-.custom-alert-success {
-    background-color: #f0fdf4 !important;
-    border: 1px solid #bbf7d0 !important;
-    color: var(--semantic-success) !important;
-}
 
-.custom-alert-error {
-    background-color: #fef2f2 !important;
-    border: 1px solid #fecaca !important;
-    color: var(--semantic-danger) !important;
-}
-
-.custom-alert-info {
-    background-color: #eff6ff !important;
-    border: 1px solid #bfdbfe !important;
-    color: var(--semantic-info) !important;
-}
-
-/* Headers - Increased typographic scale */
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Plus Jakarta Sans', sans-serif !important;
-    color: var(--text-primary) !important;
-    font-weight: 700 !important;
-    letter-spacing: -0.5px !important;
-}
-
-h1 {
-    font-size: 2.6rem !important;
-    margin-bottom: 0.6rem !important;
-}
-
-h2 {
-    font-size: 2.1rem !important;
-}
-
-h3 {
-    font-size: 1.6rem !important;
-}
-
-/* Dataframe & Tables styling */
-div[data-testid="stDataFrame"] {
-    background-color: var(--bg-main) !important;
-    border: 1px solid var(--border-color) !important;
-    border-radius: 8px !important;
-    padding: 4px !important;
-}
-
-/* Input Fields styling - Increased font and padding */
-input, textarea, select, div[data-baseweb="select"] {
+/* ─── Input Fields ─────────────────────────────────── */
+input, textarea, select {
     background-color: var(--bg-main) !important;
     color: var(--text-primary) !important;
-    border: 1px solid var(--border-color) !important;
-    border-radius: 6px !important;
-    font-size: 1.1rem !important;
-    transition: all 0.2s ease !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--r-md) !important;
+    font-size: 13.5px !important;
+    font-family: 'Inter', sans-serif !important;
+    transition: var(--ease) !important;
 }
 
 input {
-    padding: 0.75rem 0.95rem !important;
-    min-height: 48px !important;
+    padding: 8px 12px !important;
+    min-height: 38px !important;
 }
 
 textarea {
-    padding: 0.75rem 0.95rem !important;
+    padding: 10px 12px !important;
 }
 
-div[data-baseweb="select"] > div {
-    font-size: 1.1rem !important;
-    min-height: 48px !important;
-}
-
-input:focus, textarea:focus, select:focus, div[data-baseweb="select"]:focus-within {
+input:focus, textarea:focus {
     border-color: var(--primary) !important;
     box-shadow: 0 0 0 3px var(--primary-focus) !important;
     outline: none !important;
 }
 
-/* Custom Scrollbars */
-::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+div[data-baseweb="select"] > div {
+    background-color: var(--bg-main) !important;
+    border-color: var(--border) !important;
+    border-radius: var(--r-md) !important;
+    font-size: 13.5px !important;
+    min-height: 38px !important;
+    font-family: 'Inter', sans-serif !important;
+    transition: var(--ease) !important;
 }
 
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
+div[data-baseweb="select"]:focus-within > div {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 3px var(--primary-focus) !important;
 }
 
+
+/* ─── Widget Labels ────────────────────────────────── */
+[data-testid="stWidgetLabel"] label,
+[data-testid="stWidgetLabel"] p,
+label {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: var(--text-primary) !important;
+    margin-bottom: var(--sp-2) !important;
+    letter-spacing: 0.1px !important;
+}
+
+
+/* ─── Typography ───────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif !important;
+    color: var(--text-primary) !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.3px !important;
+    line-height: 1.3 !important;
+}
+
+h1 { font-size: 18px !important; margin-bottom: 4px !important; }
+h2 { font-size: 16px !important; margin-bottom: 4px !important; }
+h3 { font-size: 14px !important; margin-bottom: 4px !important; }
+h4 { font-size: 13px !important; }
+
+p, li, td, th {
+    font-size: 13.5px !important;
+    line-height: 1.6 !important;
+    color: var(--text-primary) !important;
+}
+
+div.stMarkdown p,
+div[data-testid="stMarkdownContainer"] p,
+div[data-testid="stMarkdownContainer"] li {
+    font-size: 13.5px !important;
+    line-height: 1.6 !important;
+}
+
+/* Subheader override */
+div[data-testid="stMarkdownContainer"] h3 {
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    margin-bottom: var(--sp-3) !important;
+}
+
+
+/* ─── Streamlit Containers ─────────────────────────── */
+[data-testid="stVerticalBlockBorderWrapper"] {
+    border-color: var(--border) !important;
+    border-radius: var(--r-lg) !important;
+    overflow: hidden !important;
+}
+
+/* Inner container padding fix */
+[data-testid="stVerticalBlockBorderWrapper"] > div {
+    padding: var(--sp-5) !important;
+}
+
+
+/* ─── Tabs ─────────────────────────────────────────── */
+button[data-baseweb="tab"] {
+    font-size: 13.5px !important;
+    font-weight: 500 !important;
+    color: var(--text-secondary) !important;
+    padding: 8px 16px !important;
+    transition: var(--ease) !important;
+}
+
+button[data-baseweb="tab"][aria-selected="true"] {
+    color: var(--primary) !important;
+    font-weight: 600 !important;
+}
+
+[data-testid="stTabs"] [role="tablist"] {
+    border-bottom: 1px solid var(--border) !important;
+    gap: 2px !important;
+}
+
+
+/* ─── Alerts ───────────────────────────────────────── */
+.custom-alert {
+    padding: 11px 14px !important;
+    border-radius: var(--r-md) !important;
+    margin-bottom: var(--sp-4) !important;
+    font-weight: 500 !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+    font-size: 13.5px !important;
+    line-height: 1.5 !important;
+}
+
+.custom-alert-success {
+    background-color: var(--success-light) !important;
+    border: 1px solid var(--success-border) !important;
+    color: var(--success) !important;
+}
+
+.custom-alert-error {
+    background-color: var(--danger-light) !important;
+    border: 1px solid var(--danger-border) !important;
+    color: var(--danger) !important;
+}
+
+.custom-alert-info {
+    background-color: var(--info-light) !important;
+    border: 1px solid var(--info-border) !important;
+    color: var(--info) !important;
+}
+
+
+/* ─── Dataframes / Tables ──────────────────────────── */
+div[data-testid="stDataFrame"] {
+    background-color: var(--bg-main) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--r-lg) !important;
+    overflow: hidden !important;
+    box-shadow: var(--shadow-xs) !important;
+}
+
+
+/* ─── Spinner ──────────────────────────────────────── */
+.stSpinner > div > div {
+    border-top-color: var(--primary) !important;
+}
+
+
+/* ─── Expander ─────────────────────────────────────── */
+details[data-testid="stExpander"] {
+    border: 1px solid var(--border) !important;
+    border-radius: var(--r-lg) !important;
+    overflow: hidden !important;
+    background: var(--bg-main) !important;
+}
+
+details[data-testid="stExpander"] summary {
+    font-weight: 600 !important;
+    font-size: 13.5px !important;
+    color: var(--text-primary) !important;
+    padding: var(--sp-3) var(--sp-4) !important;
+    background: var(--bg-surface) !important;
+}
+
+
+/* ─── Progress / Bar Charts ────────────────────────── */
+div[data-testid="stProgress"] > div > div {
+    background: var(--primary) !important;
+    border-radius: var(--r-full) !important;
+}
+
+
+/* ─── Number Input ─────────────────────────────────── */
+div[data-testid="stNumberInput"] input {
+    font-size: 13.5px !important;
+    min-height: 38px !important;
+}
+
+
+/* ─── Scrollbars ───────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-    background: #c1c1c1;
-    border-radius: 3px;
+    background: var(--border-strong);
+    border-radius: var(--r-full);
 }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
 
-::-webkit-scrollbar-thumb:hover {
-    background: #a8a8a8;
-}
 
-/* Subtitles/Captions - Increased font size */
+/* ─── Legacy Class Support ─────────────────────────── */
 .caption-text {
-    color: var(--text-muted) !important;
-    font-size: 1.05rem !important;
-    margin-bottom: 1.5rem !important;
+    color: var(--text-secondary) !important;
+    font-size: 13px !important;
+    margin-bottom: var(--sp-4) !important;
+}
+
+/* Responsive tweaks for narrow screens */
+@media (max-width: 1024px) {
+    [data-testid="block-container"] {
+        padding-left: var(--sp-5) !important;
+        padding-right: var(--sp-5) !important;
+    }
+    .aether-nav-link {
+        padding: 5px 9px !important;
+        font-size: 12.5px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    [data-testid="block-container"] {
+        padding-left: var(--sp-4) !important;
+        padding-right: var(--sp-4) !important;
+    }
+    .aether-nav-links {
+        gap: 1px !important;
+    }
+    .aether-nav-link {
+        padding: 5px 7px !important;
+        font-size: 12px !important;
+    }
+}
+
+/* Spacing and margins cleanup to remove plain vertical space between components */
+[data-testid="block-container"] > div:first-child,
+[data-testid="stVerticalBlock"] > div:first-child,
+[data-testid="stVerticalBlock"] > div[data-testid="stElementContainer"]:first-child,
+.element-container:first-child {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+div[data-testid="stVerticalBlock"] {
+    gap: 0.5rem !important;
+}
+
+div[data-testid="stElementContainer"] {
+    margin-top: 0 !important;
+    margin-bottom: 8px !important;
+}
+
+/* Zero out layout footprint of elements that only inject style, script or nav tags */
+.element-container:has(style),
+.element-container:has(nav),
+div[data-testid="stElementContainer"]:has(style),
+div[data-testid="stElementContainer"]:has(nav) {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+}
+
+iframe {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
 }

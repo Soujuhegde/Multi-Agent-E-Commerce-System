@@ -53,6 +53,13 @@ class InvoiceService:
                     f"Product {item.product_id} not found"
                 )
 
+            if product.stock_quantity < item.quantity:
+                raise ValueError(
+                    f"Insufficient stock for product '{product.product_name}'. Available: {product.stock_quantity}, requested: {item.quantity}"
+                )
+
+            product.stock_quantity -= item.quantity
+
             line_total = (
                 product.price *
                 item.quantity
