@@ -23,8 +23,7 @@ A sophisticated Multi-Agent E-Commerce Platform leveraging the power of Large La
 
 ```
 ├── .github/          # GitHub Actions and workflows
-├── data/             # Sample data and static files
-├── docs/             # Project documentation
+├── data/             # Sample data and static files           
 ├── scripts/          # Utility scripts
 ├── src/              # Main source code
 │   ├── agents/       # LangGraph agent definitions
