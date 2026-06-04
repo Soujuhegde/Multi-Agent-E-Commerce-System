@@ -110,6 +110,5 @@ docker-compose up --build
     pytest
     ```
 
-## 📄 License
-
-This project is licensed under the MIT License.
+## Author 
+Soujanya S P
