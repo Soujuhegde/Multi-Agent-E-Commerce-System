@@ -167,7 +167,6 @@ with col_cart:
                     </thead>
                     <tbody>{table_rows}</tbody>
                 </table>
-
                 <div style="background:#f8fafc; border-radius:10px; padding:14px 16px;
                             border:1px solid #e2e8f0;">
                     <div style="display:flex; justify-content:space-between;
@@ -298,7 +297,6 @@ if st.session_state.invoice_success_data:
                 </h2>
                 <p style="color:#475569; font-size:12.5px; margin:0;">Aether E-Commerce Platform</p>
             </div>
-
             <!-- Meta -->
             <div style="font-size:13px; margin-bottom:20px; color:#0f172a;">
                 <div style="display:flex; justify-content:space-between;
@@ -316,7 +314,6 @@ if st.session_state.invoice_success_data:
                     <span>{data['customer_name']}</span>
                 </div>
             </div>
-
             <!-- Items table -->
             <table style="width:100%; border-collapse:collapse; margin-bottom:16px;">
                 <thead>
@@ -334,7 +331,6 @@ if st.session_state.invoice_success_data:
                 </thead>
                 <tbody>{item_rows}</tbody>
             </table>
-
             <!-- Totals -->
             <div style="background:#f0fdf4; border-radius:10px; padding:14px 16px;
                         border:1px solid #bbf7d0;">
@@ -355,7 +351,6 @@ if st.session_state.invoice_success_data:
                     <span>₹{data['total']:,.2f}</span>
                 </div>
             </div>
-
             <p style="text-align:center; font-size:11.5px; color:#94a3b8;
                       margin:16px 0 0 0; letter-spacing:0.3px;">
                 ✓ Electronically generated. No physical signature required.

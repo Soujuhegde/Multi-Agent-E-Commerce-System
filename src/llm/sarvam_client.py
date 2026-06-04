@@ -35,7 +35,7 @@ class SarvamClient:
         self,
         prompt: str,
         temperature: float = 0.3,
-        max_tokens: int = 500
+        max_tokens: int = 2000
     ) -> Optional[str]:
 
         try:
@@ -63,22 +63,27 @@ class SarvamClient:
                 self.BASE_URL,
                 json=payload,
                 headers=headers,
-                timeout=60
+                timeout=120
             )
 
             response.raise_for_status()
 
             data = response.json()
+            
+            message = data["choices"][0]["message"]
+            content = message.get("content")
+            
+            if not content and "reasoning_content" in message:
+                content = message["reasoning_content"]
 
-            return (
-                data["choices"][0]
-                ["message"]["content"]
-            )
+            return content
 
+        except requests.exceptions.HTTPError as e:
+            print(f"DEBUG Sarvam HTTP Error: {str(e)} - {e.response.text}")
+            logger.error(f"Sarvam HTTP Error: {str(e)} - {e.response.text}")
+            return None
         except Exception as e:
-
-            logger.error(
-                f"Sarvam Error: {str(e)}"
-            )
-
+            import traceback
+            print(f"DEBUG Sarvam Error: {str(e)}\n{traceback.format_exc()}")
+            logger.error(f"Sarvam Error: {str(e)}\n{traceback.format_exc()}")
             return None
